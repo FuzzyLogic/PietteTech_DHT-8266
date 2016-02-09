@@ -16,11 +16,11 @@
  *                          Improved timing, moved FP math out of ISR
  */
 
-#include "PietteTech_DHT/PietteTech_DHT.h"
+#include "PietteTech_DHT.h"
 
 // system defines
 #define DHTTYPE  DHT22              // Sensor type DHT11/21/22/AM2301/AM2302
-#define DHTPIN   3         	    // Digital pin for communications
+#define DHTPIN   2         	    // Digital pin for communications
 #define DHT_SAMPLE_INTERVAL   2000  // Sample every two seconds
 
 //declaration
@@ -36,17 +36,17 @@ int n;                              // counter
 
 void setup()
 {
-    Serial.begin(9600);
-    while (!Serial.available()) {
-        Serial.println("Press any key to start.");
-        delay (1000);
-    }
+    Serial.begin(115200);
+    //while (!Serial.available()) {
+    //    Serial.println("Press any key to start.");
+    //    delay (1000);
+    //}
     Serial.println("DHT Example program using DHT.acquire and DHT.aquiring");
     Serial.print("LIB version: ");
     Serial.println(DHTLIB_VERSION);
     Serial.println("---------------");
 
-    DHTnextSampleTime = 0;  // Start the first sample immediately
+    DHTnextSampleTime = 2000;  // Start the first sample immediately
 }
 
 

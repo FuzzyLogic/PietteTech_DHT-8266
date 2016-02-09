@@ -16,7 +16,7 @@
 // NOTE DHT_REPORT_TIMING requires DHT_DEBUG_TIMING in PietteTech_DHT.h for debugging edge->edge timings
 //#define DHT_REPORT_TIMING
 
-#include "PietteTech_DHT/PietteTech_DHT.h"
+#include "PietteTech_DHT.h"  // Uncommend if building using CLI
 
 #define DHTTYPEA  DHT22       // Sensor type DHT11/21/22/AM2301/AM2302
 #define DHTPINA   3           // Digital pin for comunications

@@ -13,8 +13,7 @@
  *                          Improved timing, moved FP math out of ISR
  */
 
-#include "PietteTech_DHT/PietteTech_DHT.h"  // Uncomment if building in IDE
-//#include "PietteTech_DHT.h"  // Uncommend if building using CLI
+#include "PietteTech_DHT.h"  // Uncommend if building using CLI
 
 #define DHTTYPE  DHT22       // Sensor type DHT11/21/22/AM2301/AM2302
 #define DHTPIN   2           // Digital pin for communications
@@ -28,7 +27,7 @@ int n;      // counter
 
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(115200);
     while (!Serial.available()) {
         Serial.println("Press any key to start.");
         delay (1000);
@@ -53,7 +52,7 @@ void loop()
     Serial.print("Read sensor: ");
     //delay(100);
   
-    int result = DHT.acquireAndWait();
+    int result = DHT.acquireAndWait(0);
 
     switch (result) {
         case DHTLIB_OK:

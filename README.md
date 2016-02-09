@@ -3,8 +3,15 @@
     <b><big>Interrupt driven DHT 11/21/22 sensor library for Arduino/esp8266 </big><br>
     </b>
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/temp.png><br>
-    mg src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/humi.png><br>
+    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/humi.png><br>
 
+    read:
+    <ul>
+    <li>https://github.com/adafruit/DHT-sensor-library/issues/5</li>
+    <li>https://github.com/adafruit/DHT-sensor-library/blob/master/DHT.cpp#L138-L146</li>
+    <li>https://github.com/adafruit/DHT-sensor-library/issues/48</li>
+    <li>http://forum.arduino.cc/index.php?topic=377413.0</li>
+    </ul>
 
     </br>
     <b><big>Interrupt driven DHT 11/21/22 sensor library for Spark </big><br>

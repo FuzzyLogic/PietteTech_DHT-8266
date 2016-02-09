@@ -43,8 +43,8 @@
          Spec: 45-55us              Not Tested
  */
 
-#include "application.h"
-#include "math.h"
+//#include "application.h"
+//#include "math.h"
 #include "PietteTech_DHT.h"
 
 // Thanks to Paul Kourany for this word type conversion function

@@ -1,0 +1,29 @@
+###########################################
+# Syntax Coloring Map For PietteTech_DHT-8266
+###########################################
+
+###########################################
+# Datatypes (KEYWORD1)
+###########################################
+
+PietteTech_DHT	KEYWORD1
+
+###########################################
+# Methods and Functions (KEYWORD2)
+###########################################
+
+begin	KEYWORD2
+isrCallback	KEYWORD2
+acquire	KEYWORD2
+acquireAndWait	KEYWORD2
+getCelsius	KEYWORD2
+getFahrenheit	KEYWORD2
+getKelvin	KEYWORD2
+getDewPoint	KEYWORD2
+getDewPointSlow		KEYWORD2
+getHumidity	KEYWORD2
+acquiring	KEYWORD2
+getStatus	KEYWORD2
+readTemperature		KEYWORD2
+readHumidity	KEYWORD2
+

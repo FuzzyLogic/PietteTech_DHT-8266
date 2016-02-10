@@ -23,7 +23,7 @@
 #define __PIETTETECH_DHT_H__
 
 // There appears to be a overrun in memory on this class.  For now please leave DHT_DEBUG_TIMING enabled
-//#define DHT_DEBUG_TIMING        // Enable this for edge->edge timing collection
+#define DHT_DEBUG_TIMING        // Enable this for edge->edge timing collection
 
 //#include "application.h"
 #include <Arduino.h>

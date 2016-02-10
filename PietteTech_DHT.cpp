@@ -182,7 +182,8 @@ void PietteTech_DHT::isrCallback() {
             }
             break;
         case DATA:          // Spec: 50us low followed by high of 26-28us = 0, 70us = 1
-            if(60 < delta && delta < 155) { //valid in timing
+            //if(60 < delta && delta < 155) { //valid in timing
+            if(60 < delta && delta < DHTLIB_MAX_TIMING ) { //valid in timing
         	_bits[_idx] <<= 1; // shift the data
         	if(delta > 110) //is a one
                     _bits[_idx] |= 1;

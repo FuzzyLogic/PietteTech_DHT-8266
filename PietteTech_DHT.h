@@ -32,9 +32,13 @@
 
 #define DHTLIB_VERSION "0.3"
 
- // max valid timing in us
- //#define DHTLIB_MAX_TIMING 155
+// max valid timing in us
+//#define DHTLIB_MAX_TIMING 155
 #define DHTLIB_MAX_TIMING 165
+//#define DHTLIB_MAX_TIMING 175
+
+//#define DHTLIB_RESPONSE_MAX_TIMING 200
+#define DHTLIB_RESPONSE_MAX_TIMING 210
 
 // device types
 #define DHT11                               11

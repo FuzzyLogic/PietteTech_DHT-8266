@@ -167,7 +167,7 @@ void PietteTech_DHT::isrCallback() {
             if(delta < 65) {      // Spec: 20-200us to first falling edge of response
                 _us -= delta;
                 break; //do nothing, it started the response signal
-            } if(125 < delta && delta < 200) {
+            } if(125 < delta && delta < DHTLIB_RESPONSE_MAX_TIMING) {
 #if defined(DHT_DEBUG_TIMING)
                 *_e++ = delta;  // record the edge -> edge time
 #endif

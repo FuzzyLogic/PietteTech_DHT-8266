@@ -6,7 +6,7 @@
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/humi.png><br>
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/change.png><br>
     <p>e0 RESPONSE delta</p>
-    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/e0delda.png><br>
+    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/e0delta.png><br>
     <br>
     <br><br><br><br><br>
     <b><big>Interrupt driven DHT 11/21/22 sensor library for Spark </big><br>

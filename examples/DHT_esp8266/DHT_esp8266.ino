@@ -1,7 +1,5 @@
 // 80M CPU / esp-test-test
 // with #define DHT_DEBUG_TIMING on PietteTech_DHT-8266
-// #define DHTLIB_RESPONSE_MAX_TIMING 210
-// #define DHTLIB_MAX_TIMING 165
 #include <ESP8266WiFi.h>
 // https://github.com/knolleary/pubsubclient
 #include <PubSubClient.h>
@@ -20,7 +18,7 @@
 #endif
 
 // system defines
-#define DHTTYPE  DHT22              // Sensor type DHT11/21/22/AM2301/AM2302
+#define DHTTYPE  DHT22           // Sensor type DHT11/21/22/AM2301/AM2302
 #define DHTPIN   2              // Digital pin for communications
 
 #define REPORT_INTERVAL 4000 // in msec
@@ -41,11 +39,6 @@ long lastReconnectAttempt = 0;
 unsigned long startMills;
 float t, h;
 int acquireresult;
-
-uint8_t edges0;
-uint8_t edges1;
-uint8_t edges8;
-uint8_t edges9;
 
 WiFiClient wifiClient;
 PubSubClient client(mqtt_server, 1883, wifiClient);
@@ -160,10 +153,6 @@ void setup()
 
   ArduinoOTA.begin();
   acquireresult = DHT.acquireAndWait(0);
-  edges0 = DHT._edges[0];
-  edges1 = DHT._edges[1];
-  edges8 = DHT._edges[8];
-  edges9 = DHT._edges[9];
   if ( acquireresult == 0 ) {
     t = DHT.getCelsius();
     h = DHT.getHumidity();
@@ -187,10 +176,6 @@ void loop()
       if (bDHTstarted) {
         if (!DHT.acquiring()) {
           acquireresult = DHT.getStatus();
-          edges0 = DHT._edges[0];
-          edges1 = DHT._edges[1];
-          edges8 = DHT._edges[8];
-          edges9 = DHT._edges[9];
           if ( acquireresult == 0 ) {
             t = DHT.getCelsius();
             h = DHT.getHumidity();
@@ -208,20 +193,7 @@ void loop()
         payload += ",\"Humidity\":";
         payload += h;
         payload += ",\"acquireresult\":";
-        payload += acquireresult;
-        
-        payload += ",\"e0\":";
-        payload += edges0;
-        
-        payload += ",\"e1\":";
-        payload += edges1;
-        
-        payload += ",\"e8\":";
-        payload += edges8;
-        
-        payload += ",\"e9\":";
-        payload += edges9;
-        
+        payload += acquireresult;        
         payload += ",\"FreeHeap\":";
         payload += ESP.getFreeHeap();
         payload += ",\"RSSI\":";

@@ -4,10 +4,12 @@
     </b>
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/temp.png><br>
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/humi.png><br>
-    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/change.png><br>
-    <p>e0 RESPONSE delta</p>
-    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/e0delta.png><br>
+    <p><a href=https://github.com/chaeplin/esp8266_and_arduino/blob/c70cf8a35a0ca8d282bb380d6c6f10ac84bd3c4d/_02-mqtt-sw-temperature/_02-mqtt-sw-temperature.ino>edge delta with large sketch / sometime checksum err occured</p>
+    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/timinglarge.png><br>
     <br>
+    <p><a https://github.com/chaeplin/esp8266_and_arduino/blob/c70cf8a35a0ca8d282bb380d6c6f10ac84bd3c4d/_43-PietteTech_DHT-8266/_43-PietteTech_DHT-8266.ino>edge delta with small sketch / no err / with or without DHT_DEBUG_TIMING in PietteTech_DHT.h</p>
+    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/timinglarge.png><br>
+    <br>    
     <br><br><br><br><br>
     <b><big>Interrupt driven DHT 11/21/22 sensor library for Spark </big><br>
     </b>

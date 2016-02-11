@@ -4,6 +4,8 @@
     </b>
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/temp.png><br>
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/humi.png><br>
+    <p>delta at checksum err</p>
+    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/timing_in_checksum_err.png><br>
     <p><a href=https://github.com/chaeplin/esp8266_and_arduino/blob/c70cf8a35a0ca8d282bb380d6c6f10ac84bd3c4d/_02-mqtt-sw-temperature/_02-mqtt-sw-temperature.ino>edge delta with large sketch / sometime checksum err occured</a></p>
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/timinglarge.png><br>
     <br>

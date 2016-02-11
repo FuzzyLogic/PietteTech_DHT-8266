@@ -33,13 +33,15 @@
 #define DHTLIB_VERSION "0.3"
 
 // min valid timing
-#define DHTLIB_MIN_TIMING 60
+//#define DHTLIB_MIN_TIMING 60
+#define DHTLIB_MIN_TIMING 55
 
 // max valid timing in us
 //#define DHTLIB_MAX_TIMING 155
 #define DHTLIB_MAX_TIMING 165
 
-#define DHTLIB_ONE_TIMING 110
+//#define DHTLIB_ONE_TIMING 110
+#define DHTLIB_ONE_TIMING 105
 
 //#define DHTLIB_RESPONSE_MAX_TIMING 200
 #define DHTLIB_RESPONSE_MAX_TIMING 210

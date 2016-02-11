@@ -22,10 +22,8 @@
 #ifndef __PIETTETECH_DHT_H__
 #define __PIETTETECH_DHT_H__
 
-// There appears to be a overrun in memory on this class.  For now please leave DHT_DEBUG_TIMING enabled
 #define DHT_DEBUG_TIMING        // Enable this for edge->edge timing collection
 
-//#include "application.h"
 #include <Arduino.h>
 #include <stdlib.h>
 #include <inttypes.h>
@@ -34,14 +32,15 @@
 
 // min valid timing
 //#define DHTLIB_MIN_TIMING 60
-#define DHTLIB_MIN_TIMING 55
+#define DHTLIB_MIN_TIMING 50
 
 // max valid timing in us
 //#define DHTLIB_MAX_TIMING 155
 #define DHTLIB_MAX_TIMING 165
 
 //#define DHTLIB_ONE_TIMING 110
-#define DHTLIB_ONE_TIMING 105
+//#define DHTLIB_ONE_TIMING 105
+#define DHTLIB_ONE_TIMING 108
 
 //#define DHTLIB_RESPONSE_MAX_TIMING 200
 #define DHTLIB_RESPONSE_MAX_TIMING 210

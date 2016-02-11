@@ -183,9 +183,9 @@ void PietteTech_DHT::isrCallback() {
             break;
         case DATA:          // Spec: 50us low followed by high of 26-28us = 0, 70us = 1
             //if(60 < delta && delta < 155) { //valid in timing
-            if(60 < delta && delta < DHTLIB_MAX_TIMING ) { //valid in timing
+            if(DHTLIB_MIN_TIMING < delta && delta < DHTLIB_MAX_TIMING ) { //valid in timing
         	_bits[_idx] <<= 1; // shift the data
-        	if(delta > 110) //is a one
+        	if(delta > DHTLIB_ONE_TIMING) //is a one
                     _bits[_idx] |= 1;
 #if defined(DHT_DEBUG_TIMING)
                 *_e++ = delta;  // record the edge -> edge time
@@ -215,6 +215,9 @@ void PietteTech_DHT::isrCallback() {
                 detachInterrupt(_sigPin);
                 _status = DHTLIB_ERROR_DATA_TIMEOUT;
                 _state = STOPPED;
+#if defined(DHT_DEBUG_TIMING)
+                *_e++ = delta;  // record the edge -> edge time
+#endif
             }
             break;
         default:

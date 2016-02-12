@@ -20,6 +20,7 @@
 // system defines
 #define DHTTYPE  DHT22           // Sensor type DHT11/21/22/AM2301/AM2302
 #define DHTPIN   2              // Digital pin for communications
+#define DHT_SAMPLE_INTERVAL   2000
 
 #define REPORT_INTERVAL 4000 // in msec
 
@@ -39,6 +40,7 @@ long lastReconnectAttempt = 0;
 unsigned long startMills;
 float t, h;
 int acquireresult;
+unsigned int DHTnextSampleTime;
 
 WiFiClient wifiClient;
 PubSubClient client(mqtt_server, 1883, wifiClient);
@@ -173,21 +175,22 @@ void loop()
         }
       }
     } else {
-      if (bDHTstarted) {
+      if (millis() > DHTnextSampleTime) {
+        if (!bDHTstarted) {
+          DHT.acquire();
+          bDHTstarted = true;
+        }
+
         if (!DHT.acquiring()) {
           acquireresult = DHT.getStatus();
           if ( acquireresult == 0 ) {
             t = DHT.getCelsius();
             h = DHT.getHumidity();
-            bDHTstarted = false;
-          } else if ( acquireresult == -1 ) {
-            DHT.acquire();
-            bDHTstarted = true;
-          } else {
-            bDHTstarted = false;
           }
+          bDHTstarted = false;
+          DHTnextSampleTime = millis() + DHT_SAMPLE_INTERVAL;
         }
-      }      
+      }   
 
       if ((millis() - startMills) > REPORT_INTERVAL) {
         String payload ;
@@ -207,12 +210,6 @@ void loop()
 
         sendmqttMsg(topic, payload);
         startMills = millis();
-
-        if (!bDHTstarted) {
-          DHT.acquire();
-          bDHTstarted = true;
-        }
-
       }
       client.loop();
     }

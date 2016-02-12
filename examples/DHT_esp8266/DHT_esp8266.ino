@@ -179,10 +179,15 @@ void loop()
           if ( acquireresult == 0 ) {
             t = DHT.getCelsius();
             h = DHT.getHumidity();
+            bDHTstarted = false;
+          } else if ( acquireresult == -1 ) {
+            DHT.acquire();
+            bDHTstarted = true;
+          } else {
+            bDHTstarted = false;
           }
-          bDHTstarted = false;
         }
-      }
+      }      
 
       if ((millis() - startMills) > REPORT_INTERVAL) {
         String payload ;
@@ -202,8 +207,12 @@ void loop()
 
         sendmqttMsg(topic, payload);
         startMills = millis();
-        DHT.acquire();
-        bDHTstarted = true;
+
+        if (!bDHTstarted) {
+          DHT.acquire();
+          bDHTstarted = true;
+        }
+
       }
       client.loop();
     }

@@ -22,7 +22,7 @@
 #define DHTPIN   2              // Digital pin for communications
 #define DHT_SAMPLE_INTERVAL   2000
 
-#define REPORT_INTERVAL 4000 // in msec
+#define REPORT_INTERVAL 5000 // in msec
 
 String macToStr(const uint8_t* mac);
 void sendmqttMsg(char* topictosend, String payload);
@@ -182,15 +182,16 @@ void loop()
         }
 
         if (!DHT.acquiring()) {
-          acquireresult = DHT.getStatus();
           if ( acquireresult == 0 ) {
             t = DHT.getCelsius();
             h = DHT.getHumidity();
+            DHTnextSampleTime = millis() + (DHT_SAMPLE_INTERVAL * 2);
+          } else {
+            DHTnextSampleTime = millis() + DHT_SAMPLE_INTERVAL;
           }
           bDHTstarted = false;
-          DHTnextSampleTime = millis() + DHT_SAMPLE_INTERVAL;
         }
-      }   
+      }
 
       if ((millis() - startMills) > REPORT_INTERVAL) {
         String payload ;
@@ -201,7 +202,7 @@ void loop()
         payload += ",\"Humidity\":";
         payload += h;
         payload += ",\"acquireresult\":";
-        payload += acquireresult;        
+        payload += acquireresult;
         payload += ",\"FreeHeap\":";
         payload += ESP.getFreeHeap();
         payload += ",\"RSSI\":";

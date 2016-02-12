@@ -6,6 +6,10 @@
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/timing_in_checksum_err.png><br>
     <p>6 hour result with two sketch</p>
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/6hours.png><br>
+    <p>checksum err, e14 : 103 - 80 = 23us, e15 : 104 + 23 = 127us</p>
+    <p>todo : check two adjacent value in 100 ~ 105</p>
+    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/checksum_err1.png><br>
+    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/checksum_err2.png><br>    
     <br><br><br><br><br>
     <b><big>Interrupt driven DHT 11/21/22 sensor library for Spark </big><br>
     </b>

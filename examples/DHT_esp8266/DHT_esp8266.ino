@@ -175,15 +175,13 @@ void loop()
         }
       }
     } else {
+      
       if (bDHTstarted) {
         if (!DHT.acquiring()) {
           acquireresult = DHT.getStatus();
           if ( acquireresult == 0 ) {
             t = DHT.getCelsius();
             h = DHT.getHumidity();
-            DHTnextSampleTime = millis() + (DHT_SAMPLE_INTERVAL * 1);
-          } else {
-            DHTnextSampleTime = millis() + DHT_SAMPLE_INTERVAL;
           }
           bDHTstarted = false;
         }

@@ -175,24 +175,13 @@ void loop()
         }
       }
     } else {
-      if (millis() > DHTnextSampleTime) {
-        if (!bDHTstarted) {
-          DHT.acquire();
-          bDHTstarted = true;
-        }
-
+      if (bDHTstarted) {
         if (!DHT.acquiring()) {
+          acquireresult = DHT.getStatus();
           if ( acquireresult == 0 ) {
             t = DHT.getCelsius();
             h = DHT.getHumidity();
           }
-          DHTnextSampleTime = millis() + DHT_SAMPLE_INTERVAL;
-          bDHTstarted = false;
-        }
-
-        // locked in DHT.acquiring()
-        if (millis() - DHTnextSampleTime > (DHT_SAMPLE_INTERVAL * 2) ) {
-          DHTnextSampleTime = millis() + DHT_SAMPLE_INTERVAL;
           bDHTstarted = false;
         }
       }
@@ -215,6 +204,11 @@ void loop()
 
         sendmqttMsg(topic, payload);
         startMills = millis();
+
+        if (!bDHTstarted) {
+          DHT.acquire();
+          bDHTstarted = true;
+        }
       }
       client.loop();
     }

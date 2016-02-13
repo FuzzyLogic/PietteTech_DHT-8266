@@ -175,13 +175,9 @@ void loop()
         }
       }
     } else {
-      if (millis() > DHTnextSampleTime) {
-        if (!bDHTstarted) {
-          DHT.acquire();
-          bDHTstarted = true;
-        }
-
+      if (bDHTstarted) {
         if (!DHT.acquiring()) {
+          acquireresult = DHT.getStatus();
           if ( acquireresult == 0 ) {
             t = DHT.getCelsius();
             h = DHT.getHumidity();
@@ -211,6 +207,11 @@ void loop()
 
         sendmqttMsg(topic, payload);
         startMills = millis();
+
+        if (!bDHTstarted) {
+          DHT.acquire();
+          bDHTstarted = true;
+        }
       }
       client.loop();
     }

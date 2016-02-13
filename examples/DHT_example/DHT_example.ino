@@ -126,5 +126,11 @@ void loop()
 	    bDHTstarted = false;  // reset the sample flag so we can take another
 	    DHTnextSampleTime = millis() + DHT_SAMPLE_INTERVAL;  // set the time for next sample
 	}
+
+    // locked in DHT.acquiring()
+    if (millis() - DHTnextSampleTime > (DHT_SAMPLE_INTERVAL * 2) ) {
+      DHTnextSampleTime = millis() + DHT_SAMPLE_INTERVAL;
+      bDHTstarted = false;
+    }  	
     }
 }

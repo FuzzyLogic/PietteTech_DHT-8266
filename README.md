@@ -2,6 +2,7 @@
   <body>
     <b><big>Interrupt driven DHT 11/21/22 sensor library for esp8266 </big><br>
     </b>
+    <b><big>If you get too many checksum or timing out err, set cpu frequency to 160MHz</big><br>
     <p>delta at checksum err</p>
     <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/timing_in_checksum_err.png><br>
     <p>6 hour result with two sketch</p>

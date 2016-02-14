@@ -154,7 +154,7 @@ void setup()
   });
 
   ArduinoOTA.begin();
-  acquireresult = DHT.acquireAndWait(0);
+  acquireresult = DHT.acquireAndWait(1000);
   if ( acquireresult == 0 ) {
     t = DHT.getCelsius();
     h = DHT.getHumidity();

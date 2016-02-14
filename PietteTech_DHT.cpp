@@ -132,9 +132,9 @@ int PietteTech_DHT::acquire() {
 }
 
 int PietteTech_DHT::acquireAndWait(uint32_t timeout=0) {
-    acquire();
     uint32_t start = millis();
     uint32_t wrapper;
+    acquire();    
     while(acquiring() && (timeout == 0 || (millis() > start && (millis()-start) < timeout)));
     if (timeout)
     {

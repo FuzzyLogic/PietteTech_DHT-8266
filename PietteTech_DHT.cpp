@@ -135,7 +135,10 @@ int PietteTech_DHT::acquireAndWait(uint32_t timeout=0) {
     uint32_t start = millis();
     uint32_t wrapper;
     acquire();    
-    while(acquiring() && (timeout == 0 || (millis() > start && (millis()-start) < timeout)));
+    while(acquiring() && (timeout == 0 || (millis() > start && (millis()-start) < timeout))) {
+        // Without this Soft WDT reset occurred when dht is not connected
+        delay(0);
+    }
     if (timeout)
     {
         if (millis() < start) // millis counter wrapped

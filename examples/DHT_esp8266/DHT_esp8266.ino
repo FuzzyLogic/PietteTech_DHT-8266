@@ -74,6 +74,11 @@ void loop()
     
     startMills = millis();
 
+    // to remove lock
+    if (acquireresult == 1) {
+      detachInterrupt(DHTPIN);
+    }
+
     if (!bDHTstarted) {
       // non blocking method
       DHT.acquire();

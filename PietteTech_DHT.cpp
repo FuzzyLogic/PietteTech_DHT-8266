@@ -69,6 +69,12 @@ void PietteTech_DHT::begin(uint8_t sigPin, uint8_t dht_type, void (*callback_wra
     _status = DHTLIB_ERROR_NOTSTARTED;
 }
 
+void PietteTech_DHT::reset() {
+    _lastreadtime = 0;
+    _state = STOPPED;
+    _status = DHTLIB_ERROR_NOTSTARTED;
+}
+
 int PietteTech_DHT::acquire() {
     // Check if sensor was read less than two seconds ago and return early
     // to use last reading

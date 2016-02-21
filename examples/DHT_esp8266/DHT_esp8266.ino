@@ -78,7 +78,7 @@ void loop()
     startMills = millis();
 
     // to remove lock
-    if (acquireresult == 1) {
+    if (acquirestatus == 1) {
       DHT.reset();
     }
 

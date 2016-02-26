@@ -77,7 +77,7 @@ void PietteTech_DHT::reset() {
 
 }
 
-int PietteTech_DHT::acquire() {
+int ICACHE_RAM_ATTR PietteTech_DHT::acquire() {
     // Check if sensor was read less than two seconds ago and return early
     // to use last reading
     unsigned long currenttime = millis();
@@ -160,7 +160,7 @@ int PietteTech_DHT::acquireAndWait(uint32_t timeout=0) {
     return getStatus();
 }
 
-void PietteTech_DHT::isrCallback() {
+void ICACHE_RAM_ATTR PietteTech_DHT::isrCallback() {
     unsigned long newUs = micros();
     unsigned long delta = (newUs - _us);
     _us = newUs;

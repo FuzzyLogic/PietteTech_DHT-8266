@@ -4,12 +4,13 @@
 #define DHTTYPE  DHT22           // Sensor type DHT11/21/22/AM2301/AM2302
 #define DHTPIN   2              // Digital pin for communications
 
-#define REPORT_INTERVAL 5000 // in msec
+#define REPORT_INTERVAL 5000 // in msec must > 2000
 
 // to check dht
 unsigned long startMills;
 float t, h, d;
 int acquireresult;
+int acquirestatus;
 
 //declaration
 void dht_wrapper(); // must be declared before the lib initialization
@@ -36,6 +37,7 @@ void setup()
   Serial.println("");
 
   // blocking method
+  acquirestatus = 0;
   acquireresult = DHT.acquireAndWait(1000);
   if ( acquireresult == 0 ) {
     t = DHT.getCelsius();
@@ -49,7 +51,8 @@ void setup()
 void loop()
 {      
   if (bDHTstarted) {
-    if (!DHT.acquiring()) {
+    acquirestatus = DHT.acquiring();
+    if (!acquirestatus) {
       acquireresult = DHT.getStatus();
       if ( acquireresult == 0 ) {
         t = DHT.getCelsius();
@@ -73,6 +76,11 @@ void loop()
     Serial.println(d);
     
     startMills = millis();
+
+    // to remove lock
+    if (acquirestatus == 1) {
+      DHT.reset();
+    }
 
     if (!bDHTstarted) {
       // non blocking method

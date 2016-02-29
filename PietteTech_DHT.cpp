@@ -69,7 +69,15 @@ void PietteTech_DHT::begin(uint8_t sigPin, uint8_t dht_type, void (*callback_wra
     _status = DHTLIB_ERROR_NOTSTARTED;
 }
 
-int PietteTech_DHT::acquire() {
+void PietteTech_DHT::reset() {
+    detachInterrupt(_sigPin);
+    _lastreadtime = 0;
+    _state = STOPPED;
+    _status = DHTLIB_ERROR_NOTSTARTED;
+
+}
+
+int ICACHE_RAM_ATTR PietteTech_DHT::acquire() {
     // Check if sensor was read less than two seconds ago and return early
     // to use last reading
     unsigned long currenttime = millis();
@@ -152,7 +160,7 @@ int PietteTech_DHT::acquireAndWait(uint32_t timeout=0) {
     return getStatus();
 }
 
-void PietteTech_DHT::isrCallback() {
+void ICACHE_RAM_ATTR PietteTech_DHT::isrCallback() {
     unsigned long newUs = micros();
     unsigned long delta = (newUs - _us);
     _us = newUs;

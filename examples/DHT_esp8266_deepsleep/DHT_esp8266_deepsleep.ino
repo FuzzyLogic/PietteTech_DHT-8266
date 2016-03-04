@@ -1,4 +1,3 @@
-// CPU 80MHZ, FLASH 4M/1M
 /*
   *** Sample using esp-01, D16 is connected to RST
   *** If DHT22 is powered by a gpio( VCC of DHT22 is connected to a gpio) and OUTPUT of DHT22 is connected to D2, boot will fail.
@@ -155,5 +154,7 @@ void loop() {
     goingToSleep();
   } else {
     goingToSleep();
-  }  
+  } 
+
+  //
 }

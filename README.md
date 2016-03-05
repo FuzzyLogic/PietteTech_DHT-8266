@@ -4,7 +4,7 @@
     </b>
     <b><big>If you get too many checksum or timing out err, set cpu frequency to 160MHz</big><br>
     <p>result with two sketch</p>
-    <img src=https://github.com/chaeplin/PietteTech_DHT-8266/blob/master/pics/160Mhz.png><br>
+    <img src=./pics/160Mhz.png><br>
     <br>test(still running...)<br>
     <p>160MHz/5sec report: 13.13H, 9400, err : 20(large sketch, too many err with 80MHz)</p>
     <p>80MHz/5sec report: 8.1H, 5816, err : 0(simple sketch)</p>

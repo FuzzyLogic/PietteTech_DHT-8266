@@ -90,7 +90,7 @@ void wifi_connect() {
     if (Attempt == 300)
     {
       pinMode(DHTPIN, INPUT);
-      ESP.reset();;
+      ESP.restart();;
     }
   }
 }
@@ -116,9 +116,6 @@ void setup() {
     h = DHT.getHumidity();
     Serial.println(t);
     Serial.println(h);
-  } else {
-    pinMode(DHTPIN, INPUT);
-    ESP.reset();
   }
 
   delay(2100);
@@ -132,7 +129,7 @@ void setup() {
     Serial.println(h);
   } else {
     pinMode(DHTPIN, INPUT);
-    ESP.reset();
+    ESP.restart();
   }
 
   Serial.println("wifi on");

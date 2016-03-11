@@ -45,6 +45,10 @@
 
 #include "PietteTech_DHT.h"
 
+extern "C" {
+#include "user_interface.h"
+}
+
 // Thanks to Paul Kourany for this word type conversion function
 uint16_t word(uint8_t high, uint8_t low) {
     uint16_t ret_val = low;
@@ -131,7 +135,7 @@ int ICACHE_RAM_ATTR PietteTech_DHT::acquire() {
          * Attach the interrupt handler to receive the data once the DHT
          * starts to send us data
          */
-        _us = micros();
+        _us = system_get_time();
         attachInterrupt(_sigPin, isrCallback_wrapper, FALLING);
 
         return DHTLIB_ACQUIRING;
@@ -161,7 +165,7 @@ int PietteTech_DHT::acquireAndWait(uint32_t timeout=0) {
 }
 
 void ICACHE_RAM_ATTR PietteTech_DHT::isrCallback() {
-    unsigned long newUs = micros();
+    unsigned long newUs = system_get_time();
     unsigned long delta = (newUs - _us);
     _us = newUs;
 

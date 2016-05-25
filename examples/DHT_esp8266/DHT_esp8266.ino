@@ -27,14 +27,24 @@ void dht_wrapper() {
   DHT.isrCallback();
 }
 
-void setup()
-{
+void setup() {
   startMills = millis();
   Serial.begin(115200);
+
+  /*
+    while (!Serial) {
+    yield(); // wait for serial port to connect.
+    }
+  */
 
   Serial.println("");
   Serial.println("DHT Example program using DHT.acquire and DHT.acquireAndWait");
   Serial.println("");
+
+  // delay 2 sec before start acquire
+  while ( (millis() - startMills) < 2000 ) {
+    yield();
+  }
 
   // blocking method
   acquirestatus = 0;
@@ -48,8 +58,7 @@ void setup()
   }
 }
 
-void loop()
-{      
+void loop() {
   if (bDHTstarted) {
     acquirestatus = DHT.acquiring();
     if (!acquirestatus) {
@@ -64,17 +73,21 @@ void loop()
   }
 
   if ((millis() - startMills) > REPORT_INTERVAL) {
-    Serial.println("");
-    
-    Serial.print("Humidity (%): ");
-    Serial.println(h);
+    if ( acquireresult == 0 ) {
+      Serial.println("");
 
-    Serial.print("Temperature (oC): ");
-    Serial.println(t);
+      Serial.print("Humidity (%): ");
+      Serial.println(h);
 
-    Serial.print("Dew Point (oC): ");
-    Serial.println(d);
-    
+      Serial.print("Temperature (oC): ");
+      Serial.println(t);
+
+      Serial.print("Dew Point (oC): ");
+      Serial.println(d);
+
+    } else {
+      Serial.println("Is dht22 connected");
+    }
     startMills = millis();
 
     // to remove lock

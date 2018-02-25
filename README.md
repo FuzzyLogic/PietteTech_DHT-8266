@@ -1,6 +1,6 @@
 <html>
   <body>
-    <b><big>Interrupt driven DHT 11/21/22 sensor library for esp8266 </big><br>
+    <b><big>Interrupt driven DHT 11/21/22 sensor library for ESP32 </big><br>
     </b>
     <b><big>If you get too many checksum or timing out err, set cpu frequency to 160MHz</big><br>
     <p>result with two sketch</p>

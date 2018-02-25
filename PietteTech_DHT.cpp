@@ -45,10 +45,6 @@
 
 #include "PietteTech_DHT.h"
 
-extern "C" {
-#include "user_interface.h"
-}
-
 // Thanks to Paul Kourany for this word type conversion function
 uint16_t word(uint8_t high, uint8_t low) {
     uint16_t ret_val = low;
@@ -81,7 +77,7 @@ void PietteTech_DHT::reset() {
 
 }
 
-int ICACHE_RAM_ATTR PietteTech_DHT::acquire() {
+int IRAM_ATTR PietteTech_DHT::acquire() {
     // Check if sensor was read less than two seconds ago and return early
     // to use last reading
     unsigned long currenttime = millis();
@@ -164,7 +160,7 @@ int PietteTech_DHT::acquireAndWait(uint32_t timeout=0) {
     return getStatus();
 }
 
-void ICACHE_RAM_ATTR PietteTech_DHT::isrCallback() {
+void IRAM_ATTR PietteTech_DHT::isrCallback() {
     unsigned long newUs = system_get_time();
     unsigned long delta = (newUs - _us);
     _us = newUs;
